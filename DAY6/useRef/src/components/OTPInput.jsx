@@ -1,0 +1,43 @@
+import React, { useRef } from "react";
+
+function OTPInput() {
+  const inputRefs = useRef([]);
+
+  const handleChange = (e, index) => {
+    const value = e.target.value;
+
+    if (!/^[0-9]?$/.test(value)) return;
+    if (value && index < inputRefs.current.length - 1) {
+      inputRefs.current[index + 1].focus();
+    }
+  };
+
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Backspace" && !e.target.value && index > 0) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
+
+  return (
+    <div style={{ display: "flex", gap: "10px" }}>
+      {[0, 1, 2, 3].map((_, index) => (
+        <input
+          key={index}
+          type="text"
+          maxLength="1"
+          ref={(el) => (inputRefs.current[index] = el)}
+          onChange={(e) => handleChange(e, index)}
+          onKeyDown={(e) => handleKeyDown(e, index)}
+          style={{
+            width: "40px",
+            height: "40px",
+            textAlign: "center",
+            fontSize: "18px",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default OTPInput;
