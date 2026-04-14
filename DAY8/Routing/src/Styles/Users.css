@@ -1,0 +1,73 @@
+.users-list-container{
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px 25px;
+  background-color: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+.title {
+  text-align: center;
+  color: #f1f5f9;
+  margin-bottom: 20px;
+}
+
+/* Users list */
+.users-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each user item */
+.user-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #334155;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+/* Hover effect */
+.user-item:hover {
+  background-color: #475569;
+  transform: translateY(-2px);
+}
+
+/* Name */
+.user-item strong {
+  color: #e2e8f0;
+}
+
+/* Email */
+.user-item span {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.detail-btn {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.detail-btn:hover {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  transform: translateY(-2px);
+}
+
+/* Click effect */
+.detail-btn:active {
+  transform: scale(0.95);
+}
