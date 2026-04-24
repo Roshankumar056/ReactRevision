@@ -1,0 +1,69 @@
+/* Container */
+.table-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.table-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header */
+thead {
+  background: #f4f6f8;
+}
+
+th {
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Rows */
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+/* Hover effect */
+tbody tr:hover {
+  background: #f9fafc;
+}
+
+/* Delete Button */
+td button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #f44336;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Hover */
+td button:hover {
+  background: #d32f2f;
+}
+
+/* Empty state (optional) */
+.no-data {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+}
