@@ -12,6 +12,12 @@ export const postReducer = (state = initialState, action) => {
       return { ...state, post: action.payload, loading:false};
     case "FETCH_POST_FAILURE":
       return { ...state, loading: false, error: true };
+      case "ADD_POST_REQUEST":
+        return {...state,loading:true}
+        case "ADD_POST_SUCCESS":
+          return {...state, post:[ ...state.post,action.payload], loading:false}
+          case "ADD_POST_FAILURE":
+      return { ...state, loading: false, error: true };
     default:
       return state;
   }
