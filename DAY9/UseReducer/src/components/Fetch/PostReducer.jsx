@@ -24,6 +24,7 @@ const  reducer=(curState,action)=>{
             }
     
         default:
+            return curState
             
     }
 }
