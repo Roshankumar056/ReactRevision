@@ -51,7 +51,7 @@ interface Product {
 
 interface ProductState {
   products: Product[];
-
+  individualProduct:null|Product;
   status: "idle" | "loading" | "succeeded" | "failed";
 
   error: string | null;
@@ -63,6 +63,7 @@ interface ProductsApiResponse {
 
 const initialState: ProductState = {
   products: [],
+  individualProduct:null,
   status: "idle",
   error: null,
 };
@@ -79,6 +80,17 @@ export const fetchProducts = createAsyncThunk<Product[]>(
   },
 );
 
+export const fetchProductsDetail = createAsyncThunk(
+  "products/fetchProductsDetail",
+  async (id: string) => {
+    const res = await fetch(`https://dummyjson.com/products/${id}`);
+
+    const data = await res.json();
+
+    return data;
+  },
+);
+
 const productsSlice = createSlice({
   name: "products",
 
@@ -87,21 +99,35 @@ const productsSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.pending, (state) => {
-      state.status = "loading";
-    });
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.status = "loading";
+      })
 
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.status = "succeeded";
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.status = "succeeded";
 
-      state.products = action.payload;
-    });
+        state.products = action.payload;
+      })
 
-    builder.addCase(fetchProducts.rejected, (state, action) => {
-      state.status = "failed";
+      .addCase(fetchProducts.rejected, (state, action) => {
+        state.status = "failed";
 
-      state.error = action.error.message || "Failed to fetch data";
-    });
+        state.error = action.error.message || "Failed to fetch data";
+      })
+      .addCase(fetchProductsDetail.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchProductsDetail.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.individualProduct = action.payload;
+      })
+
+        .addCase(fetchProductsDetail.rejected, (state, action) => {
+        state.status = "failed";
+
+        state.error = action.error.message || "Failed to fetch data";
+      })
   },
 });
 

@@ -1103,9 +1103,9 @@ interface CartSidebarProps {
 
  
 // ─── APP ─────────────────────────────────────────────────────────────────────
-import {
-  useEffect
-} from "react";
+// import {
+//   useEffect
+// } from "react";
 
 
 
@@ -1124,15 +1124,13 @@ type CartItemType = ProductsType & {
   qty: number;
 };
 
-type HomeProps = {
-  setTotalCount: React.Dispatch<
-    React.SetStateAction<number>
-  >;
-};
+// type HomeProps = {
+//   setTotalCount: React.Dispatch<
+//     React.SetStateAction<number>
+//   >;
+// };
 
-export default function HomePage({
-  setTotalCount,
-}: HomeProps): React.JSX.Element {
+export default function HomePage(): React.JSX.Element {
 
   // cart items
   const [cartItems, setCartItems] =
@@ -1189,15 +1187,15 @@ export default function HomePage({
   };
 
   // total cart count
-  const totalCount = cartItems.reduce(
-    (sum, item) => sum + item.qty,
-    0
-  );
+  // const totalCount = cartItems.reduce(
+  //   (sum, item) => sum + item.qty,
+  //   0
+  // );
 
   // update navbar count
-  useEffect(() => {
-    setTotalCount(totalCount);
-  }, [totalCount, setTotalCount]);
+  // useEffect(() => {
+  //   setTotalCount(totalCount);
+  // }, [totalCount, setTotalCount]);
 
   return (
     <div className="min-h-screen bg-white font-sans">
